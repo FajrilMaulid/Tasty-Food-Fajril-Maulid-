@@ -3,8 +3,8 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use App\Models\Berita;
 use Filament\Tables;
-use App\Models\Galeri;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
@@ -12,15 +12,15 @@ use Filament\Forms\Components\Card;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use App\Filament\Resources\GaleriResource\Pages;
+use App\Filament\Resources\BeritaResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\GaleriResource\RelationManagers;
+use App\Filament\Resources\BeritaResource\RelationManagers;
 
-class GaleriResource extends Resource
+class BeritaResource extends Resource
 {
-    protected static ?string $model = Galeri::class;
+    protected static ?string $model = Berita::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-photograph';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
@@ -32,6 +32,11 @@ class GaleriResource extends Resource
                         ->maxLength(255),
                     Forms\Components\FileUpload::make('thumbnail')
                         ->required()->image()->disk('public'),
+                    Forms\Components\RichEditor::make('content')
+                        ->required(),
+                    Forms\Components\TextInput::make('link')
+                        ->required()
+                        ->maxLength(255),
                     Forms\Components\Select::make('post_as')->options([
                         'MAIN' => 'MAIN',
                         'SUB' => 'SUB'
@@ -46,6 +51,7 @@ class GaleriResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')->sortable()->searchable(),
                 Tables\Columns\ImageColumn::make('thumbnail'),
+                Tables\Columns\TextColumn::make('link')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('post_as')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
@@ -79,9 +85,9 @@ class GaleriResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListGaleris::route('/'),
-            'create' => Pages\CreateGaleri::route('/create'),
-            'edit' => Pages\EditGaleri::route('/{record}/edit'),
+            'index' => Pages\ListBerita::route('/'),
+            'create' => Pages\CreateBerita::route('/create'),
+            'edit' => Pages\EditBerita::route('/{record}/edit'),
         ];
     }    
 }

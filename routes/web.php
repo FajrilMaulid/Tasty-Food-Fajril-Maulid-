@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\TentangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('about', [AboutController::class, 'about']);
-Route::get('blog', [BlogController::class, 'blog']);
+Route::get('tentang', [TentangController::class, 'tentang']);
+Route::get('berita', [BeritaController::class, 'berita']);
 Route::get('galeri', [GaleriController::class, 'galeri']);
 Route::get('kontak', [KontakController::class, 'kontak']);

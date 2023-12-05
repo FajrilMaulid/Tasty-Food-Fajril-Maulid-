@@ -4,23 +4,23 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Galeri;
+use App\Models\Slider;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
-use Filament\Forms\Components\Card;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use App\Filament\Resources\GaleriResource\Pages;
+use App\Filament\Resources\SliderResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\GaleriResource\RelationManagers;
+use App\Filament\Resources\SliderResource\RelationManagers;
+use Filament\Forms\Components\Card;
 
-class GaleriResource extends Resource
+class SliderResource extends Resource
 {
-    protected static ?string $model = Galeri::class;
+    protected static ?string $model = Slider::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-photograph';
+    protected static ?string $navigationIcon = 'heroicon-o-view-boards';
 
     public static function form(Form $form): Form
     {
@@ -32,11 +32,7 @@ class GaleriResource extends Resource
                         ->maxLength(255),
                     Forms\Components\FileUpload::make('thumbnail')
                         ->required()->image()->disk('public'),
-                    Forms\Components\Select::make('post_as')->options([
-                        'MAIN' => 'MAIN',
-                        'SUB' => 'SUB'
-                    ])
-                ]),
+                ])
             ]);
     }
 
@@ -46,7 +42,6 @@ class GaleriResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')->sortable()->searchable(),
                 Tables\Columns\ImageColumn::make('thumbnail'),
-                Tables\Columns\TextColumn::make('post_as')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -79,9 +74,9 @@ class GaleriResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListGaleris::route('/'),
-            'create' => Pages\CreateGaleri::route('/create'),
-            'edit' => Pages\EditGaleri::route('/{record}/edit'),
+            'index' => Pages\ListSliders::route('/'),
+            'create' => Pages\CreateSlider::route('/create'),
+            'edit' => Pages\EditSlider::route('/{record}/edit'),
         ];
     }    
 }

@@ -12,11 +12,11 @@
           </div>
           <div class="nav-links-custom">
             <ul class="nav-menu">
-              <li class="nav-menu-item"><a href="index.html" class="nav-menu-link">Home</a></li>
-              <li class="nav-menu-item"><a href="about.html" class="nav-menu-link">Tentang</a></li>
-              <li class="nav-menu-item"><a href="blog.html" class="nav-menu-link">Berita</a></li>
-              <li class="nav-menu-item"><a href="galeri.html" class="nav-menu-link">Galeri</a></li>
-              <li class="nav-menu-item"><a href="kontak.html" class="nav-menu-link">Kontak</a></li>
+              <li class="nav-menu-item"><a href="/" class="nav-menu-link">Home</a></li>
+              <li class="nav-menu-item"><a href="tentang" class="nav-menu-link">Tentang</a></li>
+              <li class="nav-menu-item"><a href="berita" class="nav-menu-link">Berita</a></li>
+              <li class="nav-menu-item"><a href="galeri" class="nav-menu-link">Galeri</a></li>
+              <li class="nav-menu-item"><a href="kontak" class="nav-menu-link">Kontak</a></li>
             </ul>
           </div>
           <div class="menu-toggle bx bxs-grid-alt"></div>

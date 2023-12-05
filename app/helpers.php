@@ -1,10 +1,11 @@
 <?php
 
-use App\Models\blog;
+use App\Models\berita;
 use App\Models\card;
 use App\Models\galeri;
 use App\Models\section;
 use App\Models\setting;
+use App\Models\slider;
 
     function get_setting_value($key){
         $data = setting::where('key', $key)->first();
@@ -22,15 +23,15 @@ use App\Models\setting;
         }
     }
 
-    function get_blog_data($key){
-        $data = blog::where('post_as', $key)->first();
+    function get_berita_data($key){
+        $data = berita::where('post_as', $key)->first();
         if(isset($data)){
             return $data;
         }
     }
 
-    function get_blog2_data(){
-        $data = blog::latest()->paginate(4);
+    function get_berita2_data(){
+        $data = berita::latest()->paginate(4);
         return $data;
     }
 
@@ -39,11 +40,14 @@ use App\Models\setting;
         return $data;
     }
 
-    function get_slider_data($key){
+    function get_slider_data(){
+        $data = slider::all();
+        return $data;
+    }
+
+    function get_galeri_data($key){
         $data = galeri::where('post_as', $key)->first();
         if(isset($data)){
             return $data;
         }
-    }
-
-    // Tolong
+    } 

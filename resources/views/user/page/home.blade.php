@@ -2,9 +2,10 @@
   $site_name = get_setting_value('_site_name');
   $jumbotron = get_section_data('JUMBOTRON');
   $about = get_section_data('ABOUT');
-  $berita1 = get_blog_data('MAIN');
-  $berita2 = get_blog2_data('');
+  $berita1 = get_berita_data('MAIN');
+  $berita2 = get_berita2_data('');
   $card = get_card_data();
+  $galeri = get_galeri_data('MAIN')
 @endphp
 
 @extends('user.layout.app')
@@ -103,50 +104,23 @@
   <div class="container">
     <h2>GALERI KAMI</h2>
     <div class="row">
+      @php
+        $i=1;
+      @endphp
+      @foreach ($galeri as $item)
       <div class="col-lg-4 col-sm-6">
         <div class="thumbnail">
           <div class="img-container">
-            <img src="assets/img/brooke-lark-oaz0raysASk-unsplash.jpg" alt="" class="image" />
+            <img src="{{ Storage::url($galeri->thumbnail) }}" alt="" class="image" />
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6">
-        <div class="thumbnail">
-          <div class="img-container">
-            <img src="assets/img/ella-olsson-mmnKI8kMxpc-unsplash.jpg" alt="" class="image" />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <div class="thumbnail">
-          <div class="img-container">
-            <img src="assets/img/eiliv-aceron-ZuIDLSz3XLg-unsplash.jpg" alt="" class="image" />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <div class="thumbnail">
-          <div class="img-container">
-            <img src="assets/img/jonathan-borba-Gkc_xM3VY34-unsplash.jpg" alt="" class="image" />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <div class="thumbnail">
-          <div class="img-container">
-            <img src="assets/img/mariana-medvedeva-iNwCO9ycBlc-unsplash.jpg" alt="" class="image" />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <div class="thumbnail">
-          <div class="img-container">
-            <img src="assets/img/monika-grabkowska-P1aohbiT-EY-unsplash.jpg" alt="" class="image" />
-          </div>
-        </div>
-      </div>
+      @php
+        $i++;
+      @endphp
+      @endforeach
     </div>
-    <a href="galeri.html"><button class="btn-dark-custom mt-3">LIHAT LEBIH BANYAK</button></a>
+    <a href="galeri"><button class="btn-dark-custom mt-3">LIHAT LEBIH BANYAK</button></a>
   </div>
 </section>
 <!-- Galeri End -->

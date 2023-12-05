@@ -1,6 +1,6 @@
 @php
   $site_header3 = get_setting_value('_site_header3');
-  $slider = get_slider_data('MAIN');
+  $slider = get_slider_data();
 @endphp
 
 @extends('user.layout.apps')
@@ -21,7 +21,7 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="{{ Storage::url($slider[0]->thumbnail) }}" class="d-block w-100" alt="..." />
+                <img src="" class="d-block w-100" alt="..." />
               </div>
               @foreach ($slider as $item)
               <div class="carousel-item">
