@@ -45,3 +45,5 @@ use App\Models\setting;
             return $data;
         }
     }
+
+    // Tolong
